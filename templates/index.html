@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Remove backgrounds from images with AI-powered precision. Fast, accurate, and easy to use.">
+    <title>Background Remover - AI-Powered Background Removal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="title">Background Remover</h1>
+            <p class="subtitle">AI-powered background removal in seconds</p>
+        </header>
+
+        <!-- Upload Section -->
+        <section class="upload-section" id="uploadSection">
+            <div class="upload-area" id="uploadArea">
+                <svg class="upload-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                <h2 class="upload-title">Drop your image here</h2>
+                <p class="upload-text">or click to browse</p>
+                <p class="upload-hint">Supports JPG, PNG, WebP (max 5MB)</p>
+                <input type="file" id="fileInput" accept="image/jpeg,image/jpg,image/png,image/webp" hidden>
+            </div>
+        </section>
+
+        <!-- Preview Section -->
+        <section class="preview-section hidden" id="previewSection">
+            <div class="preview-container">
+                <!-- Original Image -->
+                <div class="preview-card">
+                    <h3 class="preview-label">Original</h3>
+                    <div class="image-wrapper">
+                        <img id="originalImage" class="preview-image" alt="Original image">
+                    </div>
+                </div>
+
+                <!-- Processed Image -->
+                <div class="preview-card">
+                    <h3 class="preview-label">Background Removed</h3>
+                    <div class="image-wrapper" id="processedWrapper">
+                        <div class="loading-spinner hidden" id="loadingSpinner">
+                            <div class="spinner"></div>
+                            <p class="loading-text">Processing your image...</p>
+                        </div>
+                        <img id="processedImage" class="preview-image hidden" alt="Processed image">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn btn-secondary" id="resetBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="1 4 1 10 7 10"></polyline>
+                        <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                    </svg>
+                    Upload New
+                </button>
+                <button class="btn btn-primary hidden" id="downloadBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download Image
+                </button>
+            </div>
+        </section>
+
+        <!-- Error Message -->
+        <div class="error-message hidden" id="errorMessage">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <span id="errorText"></span>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
